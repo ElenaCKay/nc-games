@@ -32,8 +32,9 @@ const Reviews = () => {
                         return (
                             <li className="review in list" key={review.review_id}>
                                 <h3>{review.title}</h3>
-                                <h4>{review.designer}</h4>
-                                <p>{review.owner}</p>
+                                <h4>Designer: {review.designer}</h4>
+                                <img src={`${review.review_img_url}`} alt="Game" />
+                                <p>Reviewer: {review.owner}</p>
                             </li>
                         );
                     })}

@@ -15,6 +15,15 @@ const Reviews = () => {
             <header>
                 <h2>Reviews</h2>
             </header>
+            <form>
+                <select>
+                    <option value="">Choose a category</option>
+                    <option value="euro game">euro game</option>
+                    <option value="social deduction">social deduction</option>
+                    <option value="dexterity">dexterity</option>
+                    <option value="children's games">children's games</option>
+                </select>
+            </form>
             <ul className="review-items">
                 {reviewsData.map((review) => {
                     return (

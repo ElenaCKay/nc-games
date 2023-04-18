@@ -15,3 +15,10 @@ export const fetchReviewById = (id) => {
         return response.data.review;
     });
 };
+
+export const fetchComments = (review_id) => {
+    return gamesAPI.get(`/api/reviews/${review_id}/comments`).then((response) => {
+        console.log(response);
+        return response.data.comments;
+    });
+};

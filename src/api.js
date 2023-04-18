@@ -18,7 +18,12 @@ export const fetchReviewById = (id) => {
 
 export const fetchComments = (review_id) => {
     return gamesAPI.get(`/api/reviews/${review_id}/comments`).then((response) => {
-        console.log(response);
         return response.data.comments;
+    });
+};
+
+export const patchReviewVotes = (id, incVotes) => {
+    return gamesAPI.patch(`/api/reviews/${id}`, { inc_votes: incVotes }).then((response) => {
+        return response.data.review.votes;
     });
 };

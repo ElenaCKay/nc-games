@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Reviews = () => {
     const [reviewsData, setReviews] = useState([]);
     const [reviewsLoading, setReviewsLoading] = useState(true);
+ 
 
     useEffect(() => {
         fetchReviews().then((data) => {
@@ -12,7 +13,6 @@ const Reviews = () => {
             setReviewsLoading(false);
         });
     }, []);
-
     if (!reviewsLoading) {
         return (
             <div>

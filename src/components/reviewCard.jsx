@@ -1,15 +1,19 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchReviewById } from "../api";
+import ReviewSection from "./reviewSection";
+import ReviewCardButtons from "./ReviewCardButtons";
 
 const ReviewCard = () => {
     const { review_id } = useParams();
     const [review, setReview] = useState({});
     const [reviewLoading, setreviewLoading] = useState(true);
+    const [reviewVotes, setReviewVotes] = useState(0);
 
     useEffect(() => {
         fetchReviewById(review_id).then((data) => {
             setReview(data);
+            setReviewVotes(data.votes);
             setreviewLoading(false);
         });
     }, [review_id]);
@@ -19,19 +23,8 @@ const ReviewCard = () => {
     } else {
         return (
             <div>
-                <section className="Review-section">
-                    <h2 className="Review-title">{review.title}</h2>
-                    <h3 className="Review-title">Created by: {review.designer}</h3>
-                    <img src={`${review.review_img_url}`} alt="Game" />
-                    <h4>Reviewer: {review.owner}</h4>
-                    <p>
-                        {review.review_body} <br></br>
-                        {review.created_at}
-                    </p>
-                    <h4>Votes: {review.votes}</h4>
-                </section>
-                <button>Up Vote</button>
-                <button>Down Vote</button>
+                <ReviewSection review={review} reviewVotes={reviewVotes} />
+                <ReviewCardButtons review_id={review_id} setReviewVotes={setReviewVotes} />
                 <button>Comments</button>
             </div>
         );

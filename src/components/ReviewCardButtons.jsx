@@ -6,15 +6,23 @@ const ReviewCardButtons = ({ review_id, setReviewVotes }) => {
 
     const upVoteHandler = (effect) => {
         setIncVotes(1);
-        patchReviewVotes(review_id, incVotes).then((data) => {
-            setReviewVotes(data);
-        });
+        patchReviewVotes(review_id, incVotes)
+            .then((data) => {
+                setReviewVotes(data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
     const downVoteHandler = (effect) => {
         setIncVotes(-1);
-        patchReviewVotes(review_id, incVotes).then((data) => {
-            setReviewVotes(data);
-        });
+        patchReviewVotes(review_id, incVotes)
+            .then((data) => {
+                setReviewVotes(data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     return (

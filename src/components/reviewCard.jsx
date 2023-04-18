@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { fetchReviewById } from "../api";
 import ReviewSection from "./reviewSection";
 import ReviewCardButtons from "./ReviewCardButtons";
+import Comments from "./comments";
 
 const ReviewCard = () => {
     const { review_id } = useParams();
@@ -25,7 +26,7 @@ const ReviewCard = () => {
             <div>
                 <ReviewSection review={review} reviewVotes={reviewVotes} />
                 <ReviewCardButtons review_id={review_id} setReviewVotes={setReviewVotes} />
-                <button>Comments</button>
+                <Comments review_id={review_id} />
             </div>
         );
     }

@@ -6,7 +6,9 @@ const ReviewCardButtons = ({ review_id, setReviewVotes }) => {
             return reviewVotes + 1;
         });
         patchReviewVotes(review_id, 1).catch((err) => {
-            console.log(err);
+            if (err) {
+                throw err;
+            }
             setReviewVotes((reviewVotes) => {
                 return reviewVotes - 1;
             });
@@ -18,7 +20,9 @@ const ReviewCardButtons = ({ review_id, setReviewVotes }) => {
         });
 
         patchReviewVotes(review_id, -1).catch((err) => {
-            console.log(err);
+            if (err) {
+                throw err;
+            }
             setReviewVotes((reviewVotes) => {
                 return reviewVotes + 1;
             });

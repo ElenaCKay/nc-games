@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-//import { useParams } from "react-router-dom";
-import { fetchComments } from "../api";
+import { fetchComments, postComment } from "../api";
 
 const Comments = ({ review_id }) => {
-    //let { review_id } = useParams();
-    console.log(review_id);
     const [comments, setComments] = useState([]);
     const [commentsLoading, setCommentsLoading] = useState(true);
 
@@ -15,7 +12,11 @@ const Comments = ({ review_id }) => {
         });
     }, [review_id]);
 
-    if (comments.length === 0) {
+    const submitComment = () => {
+        postComment(review_id, "Elena", body);
+    };
+
+    if (comments.length === 0 && !commentsLoading) {
         return (
             <div>
                 <h3>This review has no comments...</h3>
@@ -23,7 +24,7 @@ const Comments = ({ review_id }) => {
                     <label>Add a comment: </label>
                     <br></br>
                     <input type="text" id="comment_body" />
-                    <input type="submit" />
+                    <input type="submit" onClick={submitComment} />
                 </form>
             </div>
         );
@@ -41,7 +42,7 @@ const Comments = ({ review_id }) => {
                     <label>Add a comment: </label>
                     <br></br>
                     <input type="text" id="comment_body" />
-                    <input type="submit" />
+                    <input type="submit" onClick={submitComment} />
                 </form>
                 <ol>
                     {comments.map((comment) => {

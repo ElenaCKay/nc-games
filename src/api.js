@@ -27,3 +27,9 @@ export const patchReviewVotes = (id, incVotes) => {
         return response.data.review.votes;
     });
 };
+
+export const postComment = (id, username, body) => {
+    return gamesAPI.patch(`/api/reviews/${id}/comments`, { username: username, body: body }).then((response) => {
+        console.log(response);
+    });
+};

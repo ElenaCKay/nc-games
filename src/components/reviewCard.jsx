@@ -5,7 +5,7 @@ import ReviewSection from "./reviewSection";
 import ReviewCardButtons from "./ReviewCardButtons";
 import Comments from "./comments";
 
-const ReviewCard = () => {
+const ReviewCard = ({ user }) => {
     const { review_id } = useParams();
     const [review, setReview] = useState({});
     const [reviewLoading, setreviewLoading] = useState(true);
@@ -26,7 +26,7 @@ const ReviewCard = () => {
             <div>
                 <ReviewSection review={review} reviewVotes={reviewVotes} />
                 <ReviewCardButtons review_id={review_id} setReviewVotes={setReviewVotes} />
-                <Comments review_id={review_id} />
+                <Comments review_id={review_id} user={user} />
             </div>
         );
     }

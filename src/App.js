@@ -5,18 +5,26 @@ import Reviews from "./components/reviews";
 import ReviewCard from "./components/reviewCard";
 import { Link } from "react-router-dom";
 import Comments from "./components/comments";
+import SignInPage from "./components/signInPage";
+import { useState } from "react";
 
 function App() {
+    const [user, setUser] = useState({});
+    const [signedIn, setSignedIn] = useState(false);
     return (
         <div>
             <Link to="/">
-                <Header />
+                <Header user={user} />
             </Link>
             <Routes>
+                <Route
+                    path="/signIn"
+                    element={<SignInPage user={user} setUser={setUser} signedIn={signedIn} setSignedIn={setSignedIn} />}
+                />
                 <Route path="/" element={<Reviews />} />
-                <Route path="/reviews" element={<Reviews />} />
-                <Route path="/reviews/:review_id" element={<ReviewCard />} />
-                <Route path="/reviews/:review_id" element={<Comments />} />
+                <Route path="/reviews" element={<Reviews signedIn={signedIn} user={user}/>} />
+                <Route path="/reviews/:review_id" element={<ReviewCard user={user} />} />
+                <Route path="/reviews/:review_id" element={<Comments user={user} />} />
                 {/* <Route path="/reviews/:review_id/comments" element={<Comments />} /> */}
             </Routes>
         </div>

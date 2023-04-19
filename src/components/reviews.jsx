@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { fetchReviews } from "../api";
 import { Link } from "react-router-dom";
+import ReviewsHeader from "./reviewsHeader";
 
-const Reviews = () => {
+const Reviews = ({ signedIn, user }) => {
     const [reviewsData, setReviews] = useState([]);
     const [reviewsLoading, setReviewsLoading] = useState(true);
- 
 
     useEffect(() => {
         fetchReviews().then((data) => {
@@ -16,9 +16,7 @@ const Reviews = () => {
     if (!reviewsLoading) {
         return (
             <div>
-                <header>
-                    <h2>Reviews</h2>
-                </header>
+                <ReviewsHeader signedIn={signedIn} user={user} />
                 <form>
                     <select>
                         <option value="">Choose a category</option>

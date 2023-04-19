@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = ({user}) => {
     return (
         <header>
             <h1 id="header">Games Hub</h1>

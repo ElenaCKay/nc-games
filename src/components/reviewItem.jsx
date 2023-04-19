@@ -18,12 +18,16 @@ const ReviewItem = ({ reviewsData }) => {
         //     })}
         // </ul>
         <div className="carousel">
-            <Carousel variant="dark">
+            <Carousel variant="dark" fade>
                 {reviewsData.map((review) => {
                     return (
                         <Carousel.Item>
-                            <img className="d-block w-100" src={`${review.review_img_url}`} alt="First slide" />
-                            <Carousel.Caption>
+                            <img
+                                className="d-block w-100 img-caro"
+                                src={`${review.review_img_url}`}
+                                alt="First slide"
+                            />
+                            <Carousel.Caption className="caro-caption">
                                 <Link to={`/reviews/${review.review_id}`}>
                                     <h5>{review.title}</h5>
                                 </Link>

@@ -26,7 +26,9 @@ const Reviews = ({ signedIn, user }) => {
                         <option value="children's games">children's games</option>
                     </select>
                 </form>
-                <ReviewItem reviewsData={reviewsData} />
+                <div>
+                    <ReviewItem reviewsData={reviewsData} />
+                </div>
             </div>
         );
     } else {

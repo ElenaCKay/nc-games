@@ -50,11 +50,15 @@ const SignInPage = ({ user, setUser, signedIn, setSignedIn }) => {
                 <ol>
                     {users.map((person, index) => {
                         return (
-                            <li key={person.username}>
+                            <li key={person.username} className="users">
                                 <div onClick={() => submitUser(person)}>
                                     <h3>Username: {person.username}</h3>
                                     <h4>Name: {person.name}</h4>
-                                    <img src={person.avatar_url} alt={`${person.username}'s avatar`} />
+                                    <img
+                                        className="user-img"
+                                        src={person.avatar_url}
+                                        alt={`${person.username}'s avatar`}
+                                    />
                                 </div>
                             </li>
                         );

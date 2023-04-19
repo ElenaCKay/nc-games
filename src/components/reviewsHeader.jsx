@@ -5,7 +5,7 @@ const ReviewsHeader = ({ signedIn, user }) => {
 
     if (!signedIn) {
         return (
-            <header>
+            <header className="reviews-header">
                 <h2>Reviews</h2>
                 <Link to="/signIn">
                     <h3>Sign in</h3>
@@ -16,7 +16,7 @@ const ReviewsHeader = ({ signedIn, user }) => {
 
     if (signedIn) {
         return (
-            <header>
+            <header className="reviews-header">
                 <h2>Welcome {user.name}! Here are some reviews...</h2>
             </header>
         );

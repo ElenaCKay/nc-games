@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Comments from "./components/comments";
 import SignInPage from "./components/signInPage";
 import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     const [user, setUser] = useState({});

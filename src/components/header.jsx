@@ -1,9 +1,9 @@
-const Header = ({user}) => {
+const Header = ({ user }) => {
     return (
         <header>
-            <h1 id="header">Games Hub</h1>
+            <h1 className="header">Northcoder Games</h1>
         </header>
     );
 };
 
-export default Header
+export default Header;

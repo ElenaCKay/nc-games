@@ -24,8 +24,8 @@ function App() {
                 />
                 <Route path="/" element={<Reviews />} />
                 <Route path="/reviews" element={<Reviews signedIn={signedIn} user={user}/>} />
-                <Route path="/reviews/:review_id" element={<ReviewCard user={user} />} />
-                <Route path="/reviews/:review_id" element={<Comments user={user} />} />
+                <Route path="/reviews/:review_id" element={<ReviewCard user={user} signedIn={signedIn} />} />
+                <Route path="/reviews/:review_id" element={<Comments user={user} signedIn={signedIn}/>} />
                 {/* <Route path="/reviews/:review_id/comments" element={<Comments />} /> */}
             </Routes>
         </div>

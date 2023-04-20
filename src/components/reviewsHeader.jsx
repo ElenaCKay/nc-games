@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 
 const ReviewsHeader = ({ signedIn, user }) => {
-    console.log(signedIn);
-
     if (!signedIn) {
         return (
             <header className="reviews-header">
@@ -17,7 +15,9 @@ const ReviewsHeader = ({ signedIn, user }) => {
     if (signedIn) {
         return (
             <header className="reviews-header">
-                <h2>Welcome {user.name}! <br></br>Here are some reviews...</h2>
+                <h2>
+                    Welcome {user.name}! <br></br>Here are some reviews...
+                </h2>
             </header>
         );
     }

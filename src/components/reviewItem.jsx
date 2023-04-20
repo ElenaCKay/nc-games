@@ -21,7 +21,7 @@ const ReviewItem = ({ reviewsData }) => {
             <Carousel variant="dark" fade>
                 {reviewsData.map((review) => {
                     return (
-                        <Carousel.Item>
+                        <Carousel.Item key={`${review.review_id}`}>
                             <img
                                 className="d-block w-100 img-caro"
                                 src={`${review.review_img_url}`}

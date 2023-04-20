@@ -58,3 +58,8 @@
     margin: auto;
     background: rgba(247, 243, 243, 0.5);
 }
+
+.comments {
+    padding: 32px 0 32px 0;
+    list-style: none;
+}

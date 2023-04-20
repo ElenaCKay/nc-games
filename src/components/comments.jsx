@@ -17,6 +17,7 @@ const Comments = ({ review_id, user, signedIn }) => {
 
     const submitComment = (event) => {
         event.preventDefault();
+        setNewBody(newBody.trim());
         if (newBody.length === 0) {
             return;
         }
@@ -46,14 +47,20 @@ const Comments = ({ review_id, user, signedIn }) => {
                 <form onSubmit={submitComment}>
                     <label>Add a comment: </label>
                     <br></br>
-                    <input
-                        type="textarea"
+                    <textarea
+                        type="text"
                         id="comment_body"
-                        value={newBody}
+                        name={newBody}
+                        rows="4"
+                        cols="50"
+                        maxLength={500}
+                        required
                         onChange={(event) => {
                             setNewBody(event.target.value);
                         }}
-                    />
+                    >
+                        Comment here...
+                    </textarea>
                     <input type="submit" />
                 </form>
             </div>
@@ -71,20 +78,24 @@ const Comments = ({ review_id, user, signedIn }) => {
                 <form onSubmit={submitComment}>
                     <label>Add a comment: </label>
                     <br></br>
-                    <input
-                        type="textarea"
+                    <textarea
+                        type="text"
                         id="comment_body"
-                        value={newBody}
+                        name={newBody}
+                        rows="4"
+                        cols="33"
+                        maxLength={500}
+                        required
                         onChange={(event) => {
                             setNewBody(event.target.value);
                         }}
-                    />
+                    ></textarea>
                     <input type="submit" />
                 </form>
                 <ol>
                     {comments.map((comment) => {
                         return (
-                            <li key={`${comment.comment_id}`}>
+                            <li className="comments" key={`${comment.comment_id}`}>
                                 <h4>{comment.author}</h4>
                                 <p>
                                     {comment.body}
@@ -113,7 +124,7 @@ const Comments = ({ review_id, user, signedIn }) => {
                 <ol>
                     {comments.map((comment) => {
                         return (
-                            <li key={`${comment.comment_id}`}>
+                            <li className="comments" key={`${comment.comment_id}`}>
                                 <h4>{comment.author}</h4>
                                 <p>
                                     {comment.body}

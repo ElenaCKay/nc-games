@@ -2,30 +2,27 @@ import { useState, useEffect } from "react";
 import { fetchReviews } from "../api";
 import ReviewsHeader from "./reviewsHeader";
 import ReviewItem from "./reviewCarousel";
+import CategorySelector from "./categorySelector";
 
 const Reviews = ({ signedIn, user }) => {
     const [reviewsData, setReviews] = useState([]);
     const [reviewsLoading, setReviewsLoading] = useState(true);
+    const [category, setCategory] = useState("");
 
     useEffect(() => {
-        fetchReviews().then((data) => {
+        fetchReviews(category).then((data) => {
             setReviews(data);
             setReviewsLoading(false);
         });
-    }, []);
+    }, [category]);
+    
     if (!reviewsLoading) {
         return (
             <div>
                 <ReviewsHeader signedIn={signedIn} user={user} />
-                <form>
-                    <select>
-                        <option value="">Choose a category</option>
-                        <option value="euro game">euro game</option>
-                        <option value="social deduction">social deduction</option>
-                        <option value="dexterity">dexterity</option>
-                        <option value="children's games">children's games</option>
-                    </select>
-                </form>
+
+                <CategorySelector className="category-button" setCategory={setCategory} />
+
                 <div>
                     <ReviewItem reviewsData={reviewsData} />
                 </div>

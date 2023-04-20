@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { fetchReviewById } from "../api";
 import ReviewSection from "./reviewSection";
 import ReviewCardButtons from "./ReviewCardButtons";
-import Comments from "./comments";
+import Comments from "./commentsSection";
 
 const ReviewCard = ({ user, signedIn }) => {
     const { review_id } = useParams();

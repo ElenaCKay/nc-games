@@ -4,8 +4,8 @@ const gamesAPI = axios.create({
     baseURL: "https://games-backend-project.onrender.com",
 });
 
-export const fetchReviews = () => {
-    return gamesAPI.get(`/api/reviews`).then((response) => {
+export const fetchReviews = (category) => {
+    return gamesAPI.get(`/api/reviews`, { params: { category: category } }).then((response) => {
         return response.data.reviews;
     });
 };
@@ -37,5 +37,11 @@ export const postComment = (id, { username, body }) => {
 export const fetchUsers = () => {
     return gamesAPI.get(`/api/users`).then((response) => {
         return response.data.users;
+    });
+};
+
+export const fetchCategories = () => {
+    return gamesAPI.get(`/api/categories`).then((response) => {
+        return response.data.categories;
     });
 };

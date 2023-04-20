@@ -29,7 +29,6 @@ export const patchReviewVotes = (id, incVotes) => {
 };
 
 export const postComment = (id, { username, body }) => {
-    console.log(id, username, body);
     return gamesAPI.post(`/api/reviews/${id}/comments`, { username: username, body: body }).then((response) => {
         return response.data.comment;
     });

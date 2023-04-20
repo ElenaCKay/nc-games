@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchReviews } from "../api";
 import ReviewsHeader from "./reviewsHeader";
-import ReviewItem from "./reviewItem";
+import ReviewItem from "./reviewCarousel";
 
 const Reviews = ({ signedIn, user }) => {
     const [reviewsData, setReviews] = useState([]);

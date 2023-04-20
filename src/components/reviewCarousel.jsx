@@ -3,20 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 const ReviewItem = ({ reviewsData }) => {
     return (
-        // <ul className="review-items">
-        //     {reviewsData.map((review) => {
-        //         return (
-        //             <li className="review in list" key={review.review_id}>
-        //                 <Link to={`/reviews/${review.review_id}`}>
-        //                     <h3>{review.title}</h3>
-        //                 </Link>
-        //                 <h4>Designer: {review.designer}</h4>
-        //                 <img src={`${review.review_img_url}`} alt="Game" />
-        //                 <p>Reviewer: {review.owner}</p>
-        //             </li>
-        //         );
-        //     })}
-        // </ul>
+
         <div className="carousel">
             <Carousel variant="dark" fade>
                 {reviewsData.map((review) => {

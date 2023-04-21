@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchCategories } from "../api";
 
-const CategorySelector = ({ setChosenCategory }) => {
+const CategorySelector = ({ setSearchParams, searchParams }) => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -15,7 +15,9 @@ const CategorySelector = ({ setChosenCategory }) => {
             id="category-selector"
             defaultValue=""
             onChange={(ev) => {
-                setChosenCategory(ev.target.value);
+                const newParams = new URLSearchParams(searchParams);
+                newParams.set("category", ev.target.value);
+                setSearchParams(newParams);
             }}
         >
             <option value="all">Choose a category</option>

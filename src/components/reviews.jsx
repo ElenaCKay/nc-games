@@ -3,17 +3,17 @@ import { fetchReviews } from "../api";
 import ReviewsHeader from "./reviewsHeader";
 import ReviewItem from "./reviewCarousel";
 import CategorySelector from "./categorySelector";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const Reviews = ({ signedIn, user }) => {
     const [reviewsData, setReviews] = useState([]);
     const [reviewsLoading, setReviewsLoading] = useState(true);
     const [chosenCategory, setChosenCategory] = useState("all");
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    let { category } = useParams();
-    console.log(category);
-    if (category && category !== chosenCategory) {
-        setChosenCategory(category);
+    const newParams = searchParams.get("category");
+    if (newParams && newParams !== chosenCategory) {
+        setChosenCategory(newParams);
     }
 
     useEffect(() => {
@@ -28,7 +28,11 @@ const Reviews = ({ signedIn, user }) => {
             <div>
                 <ReviewsHeader signedIn={signedIn} user={user} />
 
-                <CategorySelector className="category-button" setChosenCategory={setChosenCategory} />
+                <CategorySelector
+                    className="category-button"
+                    setSearchParams={setSearchParams}
+                    searchParams={searchParams}
+                />
 
                 <div>
                     <ReviewItem reviewsData={reviewsData} />

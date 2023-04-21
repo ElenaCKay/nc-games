@@ -1,13 +1,6 @@
 import { useState } from "react";
 
-const AddComment = ({
-    newBody,
-    setNewBody,
-    user,
-    postComment,
-    review_id,
-    setComments,
-}) => {
+const AddComment = ({ newBody, setNewBody, user, postComment, review_id, setComments }) => {
     const [commentFailed, setCommentFailed] = useState(false);
     const [newCommentLoading, setNewCommentLoading] = useState(false);
 
@@ -27,11 +20,8 @@ const AddComment = ({
                 });
             })
             .catch((err) => {
-                console.log("im in the catch");
-                //<p>{`Error: ${err}`}</p>;
                 setNewCommentLoading(false);
                 setCommentFailed(true);
-                // setNewBody("");
             });
     };
 
@@ -53,7 +43,6 @@ const AddComment = ({
 
     return (
         <form onSubmit={submitComment}>
-            <label>{commentFailed.toString()}</label>
             <label>Add a comment: </label>
             <br></br>
             <textarea

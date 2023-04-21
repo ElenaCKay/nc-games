@@ -3,7 +3,6 @@ import Carousel from "react-bootstrap/Carousel";
 
 const ReviewItem = ({ reviewsData }) => {
     return (
-
         <div className="carousel">
             <Carousel variant="dark" fade>
                 {reviewsData.map((review) => {

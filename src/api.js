@@ -5,7 +5,9 @@ const gamesAPI = axios.create({
 });
 
 export const fetchReviews = (category) => {
+    //console.log(category);
     return gamesAPI.get(`/api/reviews`, { params: { category: category } }).then((response) => {
+        console.log(category)
         return response.data.reviews;
     });
 };

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchCategories } from "../api";
 
-const CategorySelector = ({ setCategory }) => {
+const CategorySelector = ({ setChosenCategory }) => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -15,10 +15,10 @@ const CategorySelector = ({ setCategory }) => {
             id="category-selector"
             defaultValue=""
             onChange={(ev) => {
-                setCategory(ev.target.value);
+                setChosenCategory(ev.target.value);
             }}
         >
-            <option value="">Choose a category</option>
+            <option value="all">Choose a category</option>
             {categories.map((category) => {
                 return <option key={`${category.slug}`} value={`${category.slug}`}>{`${category.slug}`}</option>;
             })}

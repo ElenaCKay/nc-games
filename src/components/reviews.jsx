@@ -3,25 +3,32 @@ import { fetchReviews } from "../api";
 import ReviewsHeader from "./reviewsHeader";
 import ReviewItem from "./reviewCarousel";
 import CategorySelector from "./categorySelector";
+import { useParams } from "react-router-dom";
 
 const Reviews = ({ signedIn, user }) => {
     const [reviewsData, setReviews] = useState([]);
     const [reviewsLoading, setReviewsLoading] = useState(true);
-    const [category, setCategory] = useState("");
+    const [chosenCategory, setChosenCategory] = useState("all");
+
+    let { category } = useParams();
+    console.log(category);
+    if (category && category !== chosenCategory) {
+        setChosenCategory(category);
+    }
 
     useEffect(() => {
-        fetchReviews(category).then((data) => {
+        fetchReviews(chosenCategory).then((data) => {
             setReviews(data);
             setReviewsLoading(false);
         });
-    }, [category]);
-    
+    }, [chosenCategory]);
+
     if (!reviewsLoading) {
         return (
             <div>
                 <ReviewsHeader signedIn={signedIn} user={user} />
 
-                <CategorySelector className="category-button" setCategory={setCategory} />
+                <CategorySelector className="category-button" setChosenCategory={setChosenCategory} />
 
                 <div>
                     <ReviewItem reviewsData={reviewsData} />

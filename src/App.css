@@ -1,16 +1,65 @@
 * {
     text-align: center;
-    background: #f5f3f4;
 }
 
+.App {
+    background-color: #f5eaef;
+}
 .header {
     color: #2f2338;
+    background: #f5eaef;
+    text-align: center;
+    margin: 64px 0px 24px 0px;
 }
 
-.review-items {
-    text-align: center;
-    list-style-type: none;
+.reviews-header {
     color: #2f2338;
-    background: #d24a77;
-    padding: 5px;
+    background: #f5eaef;
+    text-align: center;
+}
+
+.carousel-control-prev-icon {
+    background: none;
+}
+.carousel-control-next-icon {
+    background: none;
+}
+
+.carousel {
+    padding: 24px;
+    margin: auto;
+}
+
+.img-caro {
+    object-fit: cover;
+    height: 640px;
+    width: auto;
+    padding: 0px 164px 0px 164px;
+}
+
+.users {
+    list-style: none;
+    padding: 32px 0 32px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.user-img {
+    object-fit: contain;
+    height: 300px;
+    width: 300px;
+    border-radius: 50px;
+    margin-top: 12px;
+}
+
+.caro-caption {
+    width: 290px;
+    margin: auto;
+    background: rgba(247, 243, 243, 0.5);
+}
+
+.comments {
+    padding: 32px 0 32px 0;
+    list-style: none;
 }

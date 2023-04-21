@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { fetchReviewById } from "../api";
 import ReviewSection from "./reviewSection";
 import ReviewCardButtons from "./ReviewCardButtons";
-import Comments from "./comments";
+import Comments from "./commentsSection";
 
-const ReviewCard = () => {
+const ReviewCard = ({ user, signedIn }) => {
     const { review_id } = useParams();
     const [review, setReview] = useState({});
     const [reviewLoading, setreviewLoading] = useState(true);
@@ -26,7 +26,8 @@ const ReviewCard = () => {
             <div>
                 <ReviewSection review={review} reviewVotes={reviewVotes} />
                 <ReviewCardButtons review_id={review_id} setReviewVotes={setReviewVotes} />
-                <Comments review_id={review_id} />
+                <br></br>
+                <Comments review_id={review_id} user={user} signedIn={signedIn} />
             </div>
         );
     }

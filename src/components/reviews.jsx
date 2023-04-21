@@ -10,18 +10,16 @@ const Reviews = ({ signedIn, user }) => {
     const [reviewsLoading, setReviewsLoading] = useState(true);
     const [chosenCategory, setChosenCategory] = useState("all");
     const [searchParams, setSearchParams] = useSearchParams();
+    const [chosenSortBy, setchosenSortBy] = useState();
 
-    const newParams = searchParams.get("category");
-    if (newParams && newParams !== chosenCategory) {
-        setChosenCategory(newParams);
-    }
+    console.log(chosenSortBy);
 
     useEffect(() => {
-        fetchReviews(chosenCategory).then((data) => {
+        fetchReviews(chosenCategory, chosenSortBy).then((data) => {
             setReviews(data);
             setReviewsLoading(false);
         });
-    }, [chosenCategory]);
+    }, [chosenCategory, chosenSortBy]);
 
     if (!reviewsLoading) {
         return (
@@ -29,11 +27,13 @@ const Reviews = ({ signedIn, user }) => {
                 <ReviewsHeader signedIn={signedIn} user={user} />
 
                 <CategorySelector
-                    className="category-button"
+                    className="category-menu"
                     setSearchParams={setSearchParams}
                     searchParams={searchParams}
+                    setChosenCategory={setChosenCategory}
+                    chosenCategory={chosenCategory}
+                    setchosenSortBy={setchosenSortBy}
                 />
-
                 <div>
                     <ReviewItem reviewsData={reviewsData} />
                 </div>

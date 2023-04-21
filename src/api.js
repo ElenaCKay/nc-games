@@ -4,8 +4,8 @@ const gamesAPI = axios.create({
     baseURL: "https://games-backend-project.onrender.com",
 });
 
-export const fetchReviews = (category) => {
-    return gamesAPI.get(`/api/reviews`, { params: { category: category } }).then((response) => {
+export const fetchReviews = (category, sortBy) => {
+    return gamesAPI.get(`/api/reviews`, { params: { category: category, sort_by: sortBy } }).then((response) => {
         return response.data.reviews;
     });
 };
